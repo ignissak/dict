@@ -243,6 +243,10 @@ input::placeholder {
     margin: 1rem 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Animated loading */
 @keyframes ldio-i5yoszamlza {
     0% { opacity: 1 }
