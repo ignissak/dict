@@ -3,10 +3,10 @@ window.onload = () => {
     const input = document.getElementById('search')
     const redColor = getComputedStyle(document.documentElement).getPropertyValue('--red-color');
     const darkStrokeColor = getComputedStyle(document.documentElement).getPropertyValue('--dark-stroke-color');
+    const loader = document.getElementById('loader');
 
-    let typingTimer;                //timer identifier
-    let doneTypingInterval = 150;  //time in ms (5 seconds)
-    let myInput = document.getElementById('myInput');
+    let typingTimer;
+    let doneTypingInterval = 300;
 
     //on keyup, start the countdown
     input.addEventListener('keyup', () => {
@@ -34,10 +34,14 @@ window.onload = () => {
             console.log("Deleting cards...");
             return;
         }
+
+        showLoader();
+
         const response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + value);
 
         if (response.status == 404) {
             redInput();
+            hideLoader();
             return;
         }
 
@@ -46,6 +50,14 @@ window.onload = () => {
         const json = await response.json();
 
         printResult(json);
+    }
+
+    function showLoader() {
+        loader.style.display = "inline-block";
+    }
+
+    function hideLoader() {
+        loader.style.display = "none";
     }
 
     function printResult(json) {
@@ -142,6 +154,7 @@ window.onload = () => {
             cardDiv.appendChild(cardContentDiv);
             outputDiv.appendChild(cardDiv);
         }
+        hideLoader();
     }
 
     function redInput() {
