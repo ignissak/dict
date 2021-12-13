@@ -14,8 +14,34 @@ body {
     box-sizing: border-box;
 }
 
-main {
-    margin: 0 1rem;
+@media (min-width: 320px) and (max-width: 480px) {
+    main {
+        margin: 0 1rem;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    main {
+        margin: 0 2rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    main {
+        margin: 0 3rem;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    main {
+        margin: 0 4rem;
+    }
+}
+
+@media (min-width: 1201px) {
+    main {
+        margin: 0 10rem;
+    }
 }
 
 .container {
@@ -34,7 +60,6 @@ main {
     background: var(--blue-color);
 }
 
-
 .synonyms::selection {
     color: var(--primary-text-color);
     background: var(--blue-color);    
@@ -45,10 +70,21 @@ main {
     background: var(--blue-color);    
 }
 
+.antonyms::selection {
+    color: var(--primary-text-color);
+    background: var(--blue-color);    
+}
+
+.antonyms::moz-selection {
+    color: var(--primary-text-color);
+    background: var(--blue-color);    
+}
+
 *:focus {
     outline: none;
     border-color: var(--blue-color);
 }
+
 h1 {
     font-size: 2rem; /* 32px */
     font-weight: 700;
@@ -89,7 +125,20 @@ p.example {
     color: var(--seconday-text-color);
 }
 
+p.example::before {
+    content: '"'
+}
+
+p.example::after {
+    content: '"'
+}
+
 .synonym-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.antonym-container {
     display: flex;
     flex-wrap: wrap;
 }
@@ -117,7 +166,8 @@ input#search {
     box-sizing: border-box;
 
     max-width: 100%;
-    width: 100%;
+    min-width: 100%;
+    /* width: 100%; */
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -141,12 +191,19 @@ input::placeholder {
     box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.28);
 }
 
+
 .card {
     background-color: var(--dark-color);
     border: 1px solid var(--dark-stroke-color);
-    max-width: 100%;
+    /* max-width: 100%;
+    width: 100%; */
     border-radius: 2rem;
     margin-bottom: 2rem;
+    box-sizing: border-box;
+}
+
+#output {
+    width: 100%;
 }
 
 .card-content {
@@ -174,4 +231,5 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-basis: auto;
 }
