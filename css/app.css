@@ -2,6 +2,7 @@
     --background-color: #292929;
     --blue-color: #0A84FF;
     --red-color: #FF453A;
+    --orange-color: #FF9F0A;
     --dark-color: #212121;
     --dark-stroke-color: #343434;
     --primary-text-color: #DDDDDD;
@@ -72,12 +73,12 @@ body {
 
 .antonyms::selection {
     color: var(--primary-text-color);
-    background: var(--blue-color);    
+    background: var(--orange-color);    
 }
 
 .antonyms::moz-selection {
     color: var(--primary-text-color);
-    background: var(--blue-color);    
+    background: var(--orange-color);    
 }
 
 *:focus {
@@ -144,8 +145,15 @@ p.example::after {
 }
 
 p.synonyms, p.antonyms {
-    color: var(--blue-color);
     margin: 0 0.25rem 0.25rem 0;
+}
+
+p.synonyms {
+    color: var(--blue-color);
+}
+
+p.antonyms {
+    color: var(--orange-color);
 }
 
 .synonym, .antonym {
