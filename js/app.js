@@ -49,12 +49,13 @@ window.onload = () => {
     }
 
     function printResult(json) {
+        const outputDiv = document.getElementById('output');
+
+        outputDiv.innerHTML = "";
         for (obj of json) {
             const word = obj['word']
             const phonetic = obj['phonetic']
             const categories = obj['meanings'] // category
-
-            const outputDiv = document.getElementById('output');
 
             const cardDiv = createElement("div", { class: "card" });
             const cardContentDiv = createElement("div", { class: "card-content" });
