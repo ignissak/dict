@@ -242,7 +242,7 @@ input::placeholder {
     flex-basis: auto;
 }
 
-.fab {
+.fa-git-alt {
     font-size: 1rem;
     color: var(--primary-text-color);
 }
