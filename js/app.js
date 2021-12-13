@@ -77,6 +77,12 @@ window.onload = () => {
                 cardContentDiv.appendChild(createElement("p", { class: "phonetics", value: phonetic }));
             }
 
+            const button = createElement("button", {onclick: "responsiveVoice.speak('" + word + "')", type: "button", class: "speak"});
+            button.appendChild(createElement("i", {class: "fas fa-volume-up"}));
+
+            cardContentDiv.appendChild(button);
+
+            // <i class="fas fa-volume-up"></i>
             const categoryDivs = [];
             for (category of categories) {
                 const type = category['partOfSpeech']
@@ -89,7 +95,6 @@ window.onload = () => {
                 for (definitionObj of category['definitions']) {
                     let entryDiv = createElement("div", { class: "entry" });
                     entryDiv.appendChild(createElement("p", { class: "num", value: `${num}.` }));
-
 
                     // 
                     let container = createElement("div");
