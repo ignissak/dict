@@ -26,10 +26,29 @@ main {
     justify-content: center;
 }
 
-*:focus {
-    outline: none;
+::-moz-selection {
+    background: var(--blue-color);
 }
 
+::selection {
+    background: var(--blue-color);
+}
+
+
+.synonyms::selection {
+    color: var(--primary-text-color);
+    background: var(--blue-color);    
+}
+
+.synonyms::moz-selection {
+    color: var(--primary-text-color);
+    background: var(--blue-color);    
+}
+
+*:focus {
+    outline: none;
+    border-color: var(--blue-color);
+}
 h1 {
     font-size: 2rem; /* 32px */
     font-weight: 700;
@@ -75,12 +94,12 @@ p.example {
     flex-wrap: wrap;
 }
 
-p.synonyms {
+p.synonyms, p.antonyms {
     color: var(--blue-color);
     margin: 0 0.25rem 0.25rem 0;
 }
 
-.synonym {
+.synonym, .antonym {
     font-size: 0.875rem;
     padding: 0 0.75rem;
     line-height: 1rem;
@@ -95,13 +114,15 @@ p.synonyms {
 }
 
 input#search {
+    box-sizing: border-box;
+
     max-width: 100%;
     width: 100%;
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     color: var(--primary-text-color);
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 1rem;
     
     background-color: var(--dark-color);
     border: 1px solid var(--dark-stroke-color);
