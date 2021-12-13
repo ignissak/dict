@@ -1,0 +1,156 @@
+:root {
+    --background-color: #292929;
+    --blue-color: #0A84FF;
+    --red-color: #FF453A;
+    --dark-color: #212121;
+    --dark-stroke-color: #343434;
+    --primary-text-color: #DDDDDD;
+    --seconday-text-color: #A4A4A4;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    box-sizing: border-box;
+}
+
+main {
+    margin: 0 1rem;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+*:focus {
+    outline: none;
+}
+
+h1 {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;
+    color: var(--primary-text-color);
+    margin: 2rem 0;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem; /* 16px */
+    font-weight: 500;
+    color: var(--primary-text-color);
+    margin: 0;
+}
+
+p, span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--primary-text-color);
+    margin: 0;
+}
+
+p.phonetics {
+    color: var(--seconday-text-color);
+}
+
+p.category {
+    font-style: italic;
+    color: var(--seconday-text-color);
+}
+
+hr {
+    margin: 0.5rem 0 1rem 0;
+    border: 1px solid var(--dark-stroke-color);
+}
+
+p.example {
+    color: var(--seconday-text-color);
+}
+
+.synonym-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p.synonyms {
+    color: var(--blue-color);
+    margin: 0 0.25rem 0.25rem 0;
+}
+
+.synonym {
+    font-size: 0.875rem;
+    padding: 0 0.75rem;
+    line-height: 1rem;
+    border: 1px solid var(--seconday-text-color);
+    border-radius: 1rem;
+    margin: 0 0.25rem 0.25rem 0;
+    text-align: center;
+}
+
+.synonym:hover {
+    background-color: var(--dark-stroke-color);
+}
+
+input#search {
+    max-width: 100%;
+    width: 100%;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: var(--primary-text-color);
+    padding: 0.5rem 0.75rem;
+    
+    background-color: var(--dark-color);
+    border: 1px solid var(--dark-stroke-color);
+    border-radius: 2rem;
+
+    margin-bottom: 1rem;
+
+    display: block;
+}
+
+input::placeholder {
+    color: var(--seconday-text-color);
+}
+
+.shadow {
+    box-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.28);
+}
+
+.card {
+    background-color: var(--dark-color);
+    border: 1px solid var(--dark-stroke-color);
+    max-width: 100%;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+}
+
+.card-content {
+    margin: 2rem;
+}
+
+.category {
+    margin: 1rem 0;
+}
+
+.entry {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.num {
+    margin-right: 0.5rem;
+}
+
+.m-bot-4 {
+    margin-bottom: 0.25rem;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
