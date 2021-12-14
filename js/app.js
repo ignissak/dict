@@ -72,15 +72,22 @@ window.onload = () => {
             const cardDiv = createElement("div", { class: "card" });
             const cardContentDiv = createElement("div", { class: "card-content" });
 
-            cardContentDiv.appendChild(createElement("h2", { value: word }));
+            const cardTitleDiv = createElement("div", {class: "card-title"});
+
+            const button = createElement("button", {onclick: "responsiveVoice.speak('" + word + "')", type: "button", class: "tts"});
+            button.appendChild(createElement("i", {class: "far fa-volume"}));
+
+            let _div = createElement("div");
+
+            _div.appendChild(createElement("h2", { value: word }))
             if (phonetic) {
-                cardContentDiv.appendChild(createElement("p", { class: "phonetics", value: phonetic }));
+                _div.appendChild(createElement("p", { class: "phonetics", value: phonetic }));
             }
 
-            const button = createElement("button", {onclick: "responsiveVoice.speak('" + word + "')", type: "button", class: "speak"});
-            button.appendChild(createElement("i", {class: "fas fa-volume-up"}));
+            cardTitleDiv.appendChild(button);
+            cardTitleDiv.appendChild(_div);
 
-            cardContentDiv.appendChild(button);
+            cardContentDiv.appendChild(cardTitleDiv);
 
             // <i class="fas fa-volume-up"></i>
             const categoryDivs = [];
@@ -88,8 +95,8 @@ window.onload = () => {
                 const type = category['partOfSpeech']
 
                 let categoryDiv = createElement('div', { class: "category" });
-                categoryDiv.appendChild(createElement("p", { class: "category", value: type }));
                 categoryDiv.appendChild(createElement("hr"));
+                categoryDiv.appendChild(createElement("p", { class: "category", value: type }));
 
                 let num = 1;
                 for (definitionObj of category['definitions']) {
@@ -119,7 +126,8 @@ window.onload = () => {
                             synonymContainer.appendChild(createElement("p", { class: "synonyms", value: "Synonyms:" }))
 
                             for (synonym of synonyms) {
-                                synonymContainer.appendChild(createElement("p", { class: "synonym", value: synonym }))
+                                let el = createElement("p", { class: "synonym", value: synonym });
+                                synonymContainer.appendChild(el);
                             }
 
                             container.appendChild(synonymContainer);
@@ -150,8 +158,6 @@ window.onload = () => {
                 categoryDivs.push(categoryDiv);
             }
 
-            console.log(categoryDivs);
-
             for (categoryDiv of categoryDivs) {
                 cardContentDiv.appendChild(categoryDiv);
             }
@@ -159,6 +165,12 @@ window.onload = () => {
             cardDiv.appendChild(cardContentDiv);
             outputDiv.appendChild(cardDiv);
         }
+
+        // const synonymsContainers = document.querySelectorAll(".synonym-container");
+
+        // for (synonymContainer of synonymsContainers) {
+        //     console.log(synonymsContainer);
+        // }
         hideLoader();
     }
 

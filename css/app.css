@@ -114,6 +114,14 @@ p.phonetics {
     display: inline;
 }
 
+p.phonetics::before {
+    content: "/";
+}
+
+p.phonetics::after {
+    content: "/";
+}
+
 p.category {
     font-style: italic;
     color: var(--seconday-text-color);
@@ -139,6 +147,13 @@ p.example::after {
 .synonym-container {
     display: flex;
     flex-wrap: wrap;
+    /* max-height: 1.5rem;
+    overflow: hidden; */
+}
+
+.uncollapsed {
+    max-height: 100%;
+    overflow: unset;
 }
 
 .antonym-container {
@@ -212,6 +227,12 @@ input::placeholder {
     box-sizing: border-box;
 }
 
+.card-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 #output {
     width: 100%;
 }
@@ -266,6 +287,24 @@ a {
     display: inline;
     background: var(--dark-color);
     border: none;
+}
+
+.fa-volume {
+    color: var(--seconday-text-color);
+    font-size: 1rem;
+}
+
+button.tts {
+    background-color: var(--dark-color);
+    border: 1px solid var(--primary-text-color);
+    padding: 0.5rem;
+    border-radius: 1.5rem;
+    margin-right: 1rem;
+}
+
+button.tts:hover {
+    background-color: var(--dark-stroke-color);
+    cursor: pointer;
 }
 
 /* Animated loading */
