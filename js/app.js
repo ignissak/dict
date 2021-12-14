@@ -1,4 +1,4 @@
-window.onload = () => {
+window.onload = async () => {
 
     const input = document.getElementById('search')
     const redColor = getComputedStyle(document.documentElement).getPropertyValue('--red-color');
@@ -7,6 +7,14 @@ window.onload = () => {
 
     let typingTimer;
     let doneTypingInterval = 300;
+
+    const url = new URL(window.location);
+    const urlParams = url.searchParams;
+
+    if (urlParams.has("search")) {
+        const query = urlParams.get("search");
+        await update(query, true);
+    }
 
     //on keyup, start the countdown
     input.addEventListener('keyup', () => {
@@ -20,14 +28,18 @@ window.onload = () => {
     async function doneTyping() {
         defaultInput();
 
-        await update(input.value.trim());
+        await update(input.value.trim(), false);
     }
 
     input.addEventListener('input', async (event) => {
         defaultInput(); // In case of CTRL + A + DELETE
     })
 
-    async function update(value) {
+    async function update(value, updateInput) {
+        if (updateInput) {
+            input.value = value;
+        }
+
         if (isEmpty(value)) {
             document.querySelectorAll('.card').forEach(el => el.remove());
 
@@ -36,6 +48,14 @@ window.onload = () => {
         }
 
         showLoader();
+
+        if (!urlParams.has("search")) {
+            urlParams.set("search", value);
+            window.history.replaceState(null, null, url);
+        } else if (urlParams.get("search") !== value) {
+            urlParams.set("search", value);
+            window.history.replaceState(null, null, url);
+        }
 
         const response = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + value);
 
@@ -72,10 +92,10 @@ window.onload = () => {
             const cardDiv = createElement("div", { class: "card" });
             const cardContentDiv = createElement("div", { class: "card-content" });
 
-            const cardTitleDiv = createElement("div", {class: "card-title"});
+            const cardTitleDiv = createElement("div", { class: "card-title" });
 
-            const button = createElement("button", {onclick: "responsiveVoice.speak('" + word + "')", type: "button", class: "tts"});
-            button.appendChild(createElement("i", {class: "far fa-volume"}));
+            const button = createElement("button", { onclick: "responsiveVoice.speak('" + word + "')", type: "button", class: "tts" });
+            button.appendChild(createElement("i", { class: "far fa-volume" }));
 
             let _div = createElement("div");
 
